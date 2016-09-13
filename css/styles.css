@@ -1,0 +1,44 @@
+h1 {
+  text-align: center;
+  font-family: 'Slabo 27px', serif;
+}
+
+h3 {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 100;
+  border-bottom: 1px solid #D3D3D3;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+}
+
+p {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 100;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+}
+
+.nav {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.location_info {
+  width: 45%;
+  float: left;
+  height: 400px;
+  padding: 0px 10px;
+  border: 1px solid #D3D3D3;
+  margin-left: 20px;
+}
+
+#map {
+  width: 45%;
+  height: 400px;
+  float: right;
+  padding: 0px 10px;
+  margin-right: 20px;
+}

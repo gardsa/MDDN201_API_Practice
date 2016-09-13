@@ -2,7 +2,7 @@
 // We're doing reverse
 
 // I've generated a key so you can start right away
-var api_key = '614bd81902a73f0d3f6db088fdab4f68'; 
+var api_key = '614bd81902a73f0d3f6db088fdab4f68';
 
 // The end point is the url you request to get data
 var endpoint = 'http://api.opencagedata.com/geocode/v1/json?q=';
@@ -11,7 +11,8 @@ var endpoint = 'http://api.opencagedata.com/geocode/v1/json?q=';
 // http://api.opencagedata.com/geocode/v1/json?q=PLACENAME&key=YOUR-API-KEY
 
 function findLocation(){
-	var query = 'Wellington, New Zealand';
+	var query = document.getElementById('location');
+	query = query.value;
 
 	//The query needs to be encoded for URLs - ie replaces spaces with %20's
  	var encodedQuery = encodeURIComponent(query);
@@ -26,19 +27,41 @@ function findLocation(){
 		// Check your browser javascript console to look through the data
 		console.log(data);
 
-		$('#address').text('Address: ' + data.results[0].formatted);
-		$('#lat').text('Lattitude: ' + data.results[0].geometry.lat);
+		$('#address').text(data.results[0].formatted);
+		
+		var lat = data.results[0].geometry.lat;
+		$('#lat').text(lat);
+
+		var lng = data.results[0].geometry.lng;
+		$('#lng').text(lng);
+
+		var riseDate = new Date(data.results[0].annotations.sun.rise.apparent * 1000);
+		$('#sunrise').text(riseDate);
+
+		var setDate = new Date(data.results[0].annotations.sun.set.apparent * 1000);
+		$('#sunset').text(setDate);
+
+		displayMap(lat, lng);
 	});
 }
 
-/* TODO 
+function displayMap(lat, lng) {
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(lat,lng),
+    zoom: 12
+  };
+	var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+
+/* TODO
 
 Also display longitude
 Allow users to enter their own query in the text box
 General Styling
 
 -- Bonus for experts
-Display the sunrise and sunset times - note that it's returned as a UNIX timestamp, 
+Display the sunrise and sunset times - note that it's returned as a UNIX timestamp,
 it will need to be converted to human readable time
 
 Use the google maps api to insert an embeded map of the location

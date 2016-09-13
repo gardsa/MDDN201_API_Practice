@@ -3,14 +3,32 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Page Title</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans|Slabo+27px" rel="stylesheet">
 	</head>
 <body>
-	<h1>Location Finder</h1>
-	<input type='text' id='location'><button onclick="findLocation()">Find location</button>
-	<p id='address'>Address: </p>
-	<p id='lat'>Lattitude: </p>
+	<div class="nav">
+		<h1>Location Finder</h1>
+		<input type='text' id='location'><button onclick="findLocation()">Find location</button>
+	</div>
+	<div class="location_info">
+		<h3>Address:</h3>
+		<p id='address'></p>
+		<h3>Latitude:</h3>
+		<p id='lat'></p>
+		<h3>Longitude:</h3>
+		<p id='lng'></p>
+		<h3>Sunrise:</h3>
+		<p id='sunrise'></p>
+		<h3>Sunset:</h3>
+		<p id='sunset'></p>
+	</div>
+
+	<div id="map"></div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTzvrvupS0dAhj1YWA32mSst6U7dcdDxo&callback=initMap" type="text/javascript"></script> -->
 	<script src="js/script.js"></script>
+	<script asynce defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTzvrvupS0dAhj1YWA32mSst6U7dcdDxo&callback=displayMap"></script>
 </body>
 </html>
